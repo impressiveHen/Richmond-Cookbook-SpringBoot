@@ -1,6 +1,7 @@
 package com.richmond.cookbook.controller;
 
 import com.richmond.cookbook.entity.Recipe;
+import com.richmond.cookbook.entity.Step;
 import com.richmond.cookbook.entity.User;
 import com.richmond.cookbook.service.RecipeService;
 import com.richmond.cookbook.service.UserService;
@@ -16,7 +17,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class RecipeController {
@@ -40,6 +40,7 @@ public class RecipeController {
             recipe = recipeService.getById(Integer.valueOf(id));
             model.addAttribute("id", id);
         }
+
         model.addAttribute("recipe", recipe);
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -56,6 +57,10 @@ public class RecipeController {
             return "recipe/edit";
         }
 
+        recipe.getSteps().stream().forEach(s->{
+            s.setRecipe(recipe);
+        });
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByUserName(auth.getName());
 
@@ -63,14 +68,10 @@ public class RecipeController {
             recipe.setImage("");
         }
 
-        List<Recipe> userRecipes = user.getRecipes();
         if (recipe.getId()==null) {
             user.addRecipe(recipe);
         } else {
-            for (int i=0; i<userRecipes.size(); i++) {
-                if (userRecipes.get(i).getId() == recipe.getId())
-                    user.updateRecipe(recipe, i);
-            }
+            user.updateRecipe(recipe);
         }
 
         userService.saveUser(user);

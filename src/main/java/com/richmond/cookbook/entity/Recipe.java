@@ -53,6 +53,7 @@ public class Recipe {
         steps.remove(step);
         step.setRecipe(null);
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -66,8 +66,14 @@ public class User {
         recipe.setUser(null);
     }
 
-    public void updateRecipe(Recipe recipe, int idx) {
-        recipes.set(idx, recipe);
+    public boolean updateRecipe(Recipe recipe) {
+        for (int i=0; i<recipes.size(); i++) {
+            if (recipes.get(i).getId() == recipe.getId()) {
+                recipes.set(i, recipe);
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

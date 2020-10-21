@@ -15,3 +15,16 @@
     font-size: 15px;
     color: #FF1C19;
 }
+
+.form-editRecipe .recipe-step {
+    position: relative;
+    overflow: visible;
+    border-color: transparent;
+    padding: 15px 15px 15px 15px;
+}
+
+.form-editRecipe .close-recipe-step {
+    position: absolute;
+    top: -5px;
+    right: -1px;
+}
