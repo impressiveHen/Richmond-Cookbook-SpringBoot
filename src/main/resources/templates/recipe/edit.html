@@ -17,7 +17,7 @@
       <div class="row mb-3">
         <label for="image" class="col-sm-2 col-form-label">Image</label>
         <div class="col-sm-10">
-          <p th:text="${message != null ? message : recipe.image}" th:if="${message ne null || recipe.image != ''}" class="alert alert-primary"></p>
+          <p th:text="${message != null ? message : recipe.image}" th:if="${message ne null || (recipe.image != null && recipe.image != '')}" class="alert alert-primary"></p>
           <form method="post" th:action="@{'/storage/uploadRecipeImage' + ${id==null ? '' : '?id='+id}}" enctype="multipart/form-data">
             <div class="form-group">
               <input type="file" accept="image/x-png,image/gif,image/jpeg" name="image" id="image" class="form-control-file" />
