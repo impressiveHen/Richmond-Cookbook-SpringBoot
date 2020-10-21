@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/layout :: layout(~{::title}, ~{::link}, ~{::section})">
+<head>
+  <title>Edit recipe</title>
+  <link rel="stylesheet" href="/css/recipe/edit.css?ver=<?php echo rand(111,999)?>" />
+</head>
+<body>
+
+<section class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+      <h1 class="h3 font-weight-normal text-center">Edit recipe</h1>
+
+      <div class="row mb-3">
+        <label for="image" class="col-sm-2 col-form-label">Image</label>
+        <div class="col-sm-10">
+          <p th:text="${message != null ? message : recipe.image}" th:if="${message ne null || recipe.image != ''}" class="alert alert-primary"></p>
+          <form method="post" th:action="@{'/storage/uploadRecipeImage' + ${id==null ? '' : '?id='+id}}" enctype="multipart/form-data">
+            <div class="form-group">
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" name="image" id="image" class="form-control-file" />
+            </div>
+            <button type="submit" class="btn btn-primary">Upload image</button>
+          </form>
+        </div>
+      </div>
+
+      <form th:action="@{/recipe/save}" method="POST" th:object="${recipe}"
+            class="form-editRecipe"
+            autocomplete="off" role="form">
+        <input type="text" th:field="*{id}" id="recipe-id" />
+        <input th:field="*{user}" id="recipe-user" />
+        <input type="text" id="recipe-image" th:name="image" th:value="${message != null ? message : recipe.image}"/>
+        <div class="form-group row">
+          <label for="name" class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-10">
+            <input type="text" th:field="*{name}" placeholder="Name"
+                   class="form-control" id="name"/>
+            <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                   class="validation-message"></label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="category" class="col-sm-2 col-form-label">Category</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="category" th:field="*{category}" required>
+              <option value="">--select--</option>
+              <option th:value="Dish">Dish</option>
+              <option th:value="Desert">Desert</option>
+              <option th:value="Soup">Soup</option>
+              <option th:value="Bread">Bread</option>
+            </select>
+            <label th:if="${#fields.hasErrors('category')}" th:errors="*{category}"
+                   class="validation-message"></label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="difficulty" class="col-sm-2 col-form-label">Difficulty</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="difficulty" th:field="*{difficulty}" required>
+              <option value="">--select--</option>
+              <option th:value="1">1</option>
+              <option th:value="2">2</option>
+              <option th:value="3">3</option>
+              <option th:value="4">4</option>
+              <option th:value="5">5</option>
+            </select>
+            <label th:if="${#fields.hasErrors('difficulty')}" th:errors="*{difficulty}"
+                   class="validation-message"></label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="text-center col">
+            <a class="btn btn-warning" role="button" th:href="@{/user/profile}">Back</a>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</section>
+
+</body>
+</html>

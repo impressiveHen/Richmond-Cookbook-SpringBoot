@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/layout :: layout(~{::title}, ~{::link}, ~{::section})">
+<head>
+  <title>Login page</title>
+  <link th:rel="stylesheet" href="/css/login.css?ver=<?php echo rand(111,999)?>" />
+</head>
+<body>
+
+<section class="container">
+  <form th:action="@{/login}" method="post" class="form-login">
+    <div class="text-center login-img">
+      <img th:src="@{/images/thaifood.jpg}" width="250px" height="250px" alt="login">
+    </div>
+    <h1 class="h3 font-weight-normal text-center">Please sign in</h1>
+
+    <label for="user_name" class="sr-only">User name</label>
+    <input type="text" id="user_name" name="user_name" class="form-control" placeholder="User name" required autofocus>
+
+    <label for="password" class="sr-only">Password</label>
+    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+
+    <div align="center" th:if="${param.error}">
+      <p style="font-size: 10px; color: #FF1C19;">User Name or Password invalid, please verify</p>
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+  </form>
+</section>
+
+</body>
+</html>

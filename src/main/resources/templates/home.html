@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/layout :: layout(~{::title}, ~{::link}, ~{::section})">
+<head>
+  <title>Welcome to cookbook home!</title>
+  <link th:rel="stylesheet" href="/css/home.css?ver=<?php echo rand(111,999)?>" />
+</head>
+<body>
+
+<section class="container home">
+  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light"
+       th:style="'background: url(/images/pizza.jpg) no-repeat center center fixed;'">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <h1 class="display-4 font-weight-normal">Welcome to Cookbook</h1>
+      <p class="lead font-weight-normal">CREATE | COOK | CHECKOUT. Share step-by-step recipes for the food you love with your friends.</p>
+      <a class="btn btn-outline-secondary" href="/signup">Sign up</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

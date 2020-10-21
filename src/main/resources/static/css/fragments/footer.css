@@ -1,0 +1,13 @@
+footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+footer p {
+    margin-bottom: .25rem;
+}
+
+footer hr {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}

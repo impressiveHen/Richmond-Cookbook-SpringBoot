@@ -1,0 +1,17 @@
+.form-editRecipe #recipe-id {
+    display: none;
+}
+
+.form-editRecipe #recipe-user {
+    display: none;
+}
+
+.form-editRecipe #recipe-image {
+    display: none;
+}
+
+.form-editRecipe .validation-message {
+    font-style: normal;
+    font-size: 15px;
+    color: #FF1C19;
+}
