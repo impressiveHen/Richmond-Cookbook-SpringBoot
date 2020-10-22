@@ -62,26 +62,26 @@
     content: " ";
     height: 0;
     position: absolute;
-    top: 11px;
+    top: 4px;
     width: 0;
     z-index: 1;
     right: 15px;
-    border: medium solid white;
-    border-width: 5px 0 5px 5px;
-    border-color: transparent transparent transparent white;
+    border: medium solid red;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent red;
 }
 
 .steps-timeline .right::before {
     content: " ";
     height: 0;
     position: absolute;
-    top: 11px;
+    top: 4px;
     width: 0;
     z-index: 1;
     left: 15px;
-    border: medium solid white;
-    border-width: 5px 5px 5px 0;
-    border-color: transparent white transparent transparent;
+    border: medium solid red;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent red transparent transparent;
 }
 
 .steps-timeline .right::after {
