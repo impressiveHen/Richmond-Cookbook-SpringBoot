@@ -9,12 +9,43 @@
 <body>
 
 <section class="container home">
-  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light"
-       th:style="'background: url(/images/pizza.jpg) no-repeat center center fixed;'">
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
-      <h1 class="display-4 font-weight-normal">Welcome to Cookbook</h1>
-      <p class="lead font-weight-normal">CREATE | COOK | CHECKOUT. Share step-by-step recipes for the food you love with your friends.</p>
-      <a class="btn btn-outline-secondary" href="/signup">Sign up</a>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+      <div class="row position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light"
+           th:style="'background: url(/images/pizza.jpg) no-repeat center center fixed;'">
+        <div class="col-md-5 p-lg-5 mx-auto my-5">
+          <h1 class="display-4 font-weight-normal">Welcome to Cookbook</h1>
+          <p class="lead font-weight-normal">CREATE | COOK | CHECKOUT. Share step-by-step recipes for the food you love with your friends.</p>
+          <a class="btn btn-outline-secondary" href="/signup">Sign up</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4" th:each="parsedRecipe, iterStat: ${parsedRecipes}">
+          <div th:replace="fragments/recipecard :: recipecard(${iterStat.index}, ${parsedRecipe.title}, ${parsedRecipe.author}, ${parsedRecipe.category}, ${parsedRecipe.difficulty}, ${parsedRecipe.image}, ${parsedRecipe.steps})"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
+
+  <div class="modal fade" id="recipeDetailModal" tabindex="-1" role="dialog" aria-labelledby="recipeDetailModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <img src="" width="200" height="200" class="rounded-circle img-thumbnail mr-5">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="steps-timeline"></div>
+          <hr>
+          <br>
+        </div>
+      </div>
     </div>
   </div>
 </section>

@@ -7,6 +7,7 @@ import com.richmond.cookbook.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,7 +20,15 @@ public class RecipeService {
         return recipe.get();
     }
 
-    public void save(Recipe recipe) { recipeRepository.save(recipe); }
+    public void save(Recipe recipe) {
+        recipeRepository.save(recipe);
+    }
 
-    public void deleteById(int id) { recipeRepository.deleteById(id); }
+    public void deleteById(int id) {
+        recipeRepository.deleteById(id);
+    }
+
+    public List<Recipe> getAllRecipes() {
+        return recipeRepository.findAll();
+    }
 }

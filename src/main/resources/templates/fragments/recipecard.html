@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Recipe card</title>
+  <link th:rel="stylesheet" href="css/fragments/recipecard.css?ver=<?php echo rand(111,999)?>" />
+</head>
+<body>
+<div class="card m-4 shadow-sm recipecard" th:data="${'recipecard'+idx}" th:fragment="recipecard(idx, title, author, category, difficulty, image, steps)">
+  <img class="card-img-top" th:src="${image}" alt="Recipe card image">
+  <div class="card-body">
+    <h5 class="card-title" th:text="${title}"></h5>
+    <p class="card-text">
+      <ul>
+        <li th:text="${'CATEGORY: '+category}"></li>
+        <li th:text="${'DIFFICULTY: '+difficulty}"></li>
+      </ul>
+    </p>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+        <a href="#show-recipe-detail" class="btn btn-sm btn-outline-secondary">view</a>
+      </div>
+      <small class="text-muted"><em th:text="${'By '+author}"></em></small>
+    </div>
+  </div>
+  <div id="steps" th:attr="data-steps=${steps}"></div>
+</div>
+</body>
+</html>

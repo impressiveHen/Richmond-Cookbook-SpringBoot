@@ -1,7 +1,6 @@
 package com.richmond.cookbook.controller;
 
 import com.richmond.cookbook.entity.Recipe;
-import com.richmond.cookbook.entity.Step;
 import com.richmond.cookbook.entity.User;
 import com.richmond.cookbook.service.RecipeService;
 import com.richmond.cookbook.service.UserService;
