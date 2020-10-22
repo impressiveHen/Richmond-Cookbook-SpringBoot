@@ -96,19 +96,16 @@
 }
 
 @media screen and (max-width: 600px) {
-    /* Place the timelime to the left */
     .steps-timeline .timeline::after {
         left: 15px;
     }
 
-    /* Full-width boxs */
     .steps-timeline .box {
         width: 100%;
         padding-left: 35px;
         padding-right: 12px;
     }
 
-    /* Make sure that all arrows are pointing leftwards */
     .steps-timeline .box::before {
         left: 30px;
         border: medium solid white;
@@ -116,12 +113,10 @@
         border-color: transparent white transparent transparent;
     }
 
-    /* Make sure all circles are at the same spot */
     .steps-timeline .left::after, .right::after {
         left: 8px;
     }
 
-    /* Make all right boxs behave like the left ones */
     .steps-timeline .right {
         left: 0%;
     }
